@@ -1,0 +1,42 @@
+﻿@page "/ack2"
+
+<PageTitle>Ackermann</PageTitle>
+
+<h1>Funcion de Ackermann</h1>
+
+<input type="number" @bind="m" placeholder="Ingrese el primer numero" />
+<input type="number" @bind="n" placeholder="Ingrese el segundo numero" />
+<button @onclick="resultado">Calcular</button>
+
+<p>Resultado: @result</p>
+
+
+@code {
+	int result;
+	int? m;
+	int? n;
+
+	void resultado()
+	{
+		result = Ackermann(m ?? 0, n ?? 0);
+		m = null;
+		n = null;
+	}
+
+	int Ackermann(int m, int n)
+	{
+		if (m == 0)
+		{
+			return n + 1;
+		}
+		else if (n == 0)
+		{
+			return Ackermann(m - 1, 1);
+		}
+		else
+		{
+			return Ackermann(m - 1, Ackermann(m, n - 1));
+		}
+	}
+}
+
