@@ -1,0 +1,148 @@
+﻿.containerAck {
+    width: 553px;
+    height: 586px;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    border-radius: 30px;
+    background: rgba(28, 142, 142, 0.31);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 8rem 0rem 0rem 30rem;
+}
+
+
+.titleAck {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0.5rem 0 0 1rem;
+    width: 50%;
+}
+
+.labelAck {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.inputAck {
+    width: 80px;
+    height: 55px;
+    border: 1px solid #0BBEB3;
+    background: rgba(81, 14, 14, 0.00);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 6rem;
+    color: rgba(255, 255, 255, 0.66);
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.custom-placeholder::placeholder {
+    color: rgba(255, 255, 255, 0.66);
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.buttonAck {
+    width: 150px;
+    height: 48px;
+    flex-shrink: 0;
+    border: 1px solid #0BBEB3;
+    background: rgba(217, 217, 217, 0.00);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #0AE1D4;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.buttonAck:hover {
+    background: #0AE1D4;
+    color: #1C8E8E;
+}
+
+.resultadoAck {
+    color: #0AE1D4;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.errorResultadoAck {
+    color: #FF0F0F;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.titleGridAck {
+    display: grid;
+align-items: center;
+justify-content: center;
+}
+
+.inputmGrid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    margin-left: -1rem;
+}
+
+.inputnGrid {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    margin-left: -1rem;
+}
+
+.buttonGrid {
+    display: grid;
+align-items: center;
+    justify-content: center;
+
+}
+
+.resultadoGrid {
+    display: grid;
+align-items: center;
+    justify-content: center;
+
+}
+
+.barraGrid {
+    grid-column: 1;
+    grid-row: 2;
+    width: 200px;
+    height: 0px;
+    stroke-width: 1px;
+    stroke: #FFF;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.8rem;
+}
+

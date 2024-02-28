@@ -2,25 +2,82 @@
 
 <PageTitle>Ackermann</PageTitle>
 
-<h1>Funcion de Ackermann</h1>
+<head>
+	<link rel="stylesheet" href="~/css/Ackermann.css" />
+</head>
 
-<input type="number" @bind="m" placeholder="Ingrese el primer numero" />
-<input type="number" @bind="n" placeholder="Ingrese el segundo numero" />
-<button @onclick="resultado">Calcular</button>
 
-<p>Resultado: @result</p>
+<div class="containerAck">
 
+	<div class="titleGridArk">
+		<h1 class="titleAck">Función de Ackermann</h1>
+	</div>
+
+	<div class="inputmGrid">
+
+		<label class="labelAck" for="m_input">Ingrese el valor de m (primer número):</label>
+		<input class="inputAck custom-placeholder" type="number" @bind="m" placeholder="    m" required />
+	</div>
+	<div class="inputnGrid">
+		<label class="labelAck" for="n_input">Ingrese el valor de n (segundo número):</label>
+		<input class="inputAck custom-placeholder" type="number" @bind="n" placeholder="     n" required />
+	</div>
+	<div class="buttonGrid">
+		<button class="buttonAck" @onclick="resultado" disabled="@(m.HasValue && (m < 0 || m > 3) || n.HasValue && (n < 0 || n > 3))">Calcular</button>
+		<button class="buttonAck" @onclick="LimpiarValores">Limpiar</button>
+
+	</div>
+	<div class="resultadoGrid">
+		@if (m.HasValue && (m < 0 || m > 3))
+		{
+			<p class="errorResultadoAck">El primer número debe estar entre 0 y 3.</p>
+		}
+		@if (n.HasValue && (n < 0 || n > 3))
+		{
+			<p class="errorResultadoAck">El segundo número debe estar entre 0 y 3.</p>
+		}
+		@if ( !m.HasValue || !n.HasValue)
+		{
+			<p class="resultadoAck">Ingrese los valores de m y n.</p>
+		}
+		else if(result.HasValue)
+{
+			<p class="resultadoAck">El Resultado de @m y @n es: @result</p>
+		}
+	</div>
+	<div class="barraGrid">
+		<h2 class="labelAck">
+			<svg xmlns="http://www.w3.org/2000/svg" width="10" height="195" viewBox="0 0 2 119" fill="none">
+				<path d="M1 0L1 119" stroke="white" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="10" height="195" viewBox="0 0 2 119" fill="none">
+				<path d="M1 0L1 119" stroke="white" />
+			</svg>
+		</h2>
+	</div>
+</div>
 
 @code {
-	int result;
+	int? result;
 	int? m;
 	int? n;
 
 	void resultado()
 	{
+		if ((m.HasValue && (m < 0 || m > 3)) || (n.HasValue && (n < 0 || n > 3)))
+		{
+			result = null;
+			return;
+		}
+
 		result = Ackermann(m ?? 0, n ?? 0);
+	}
+
+	void LimpiarValores()
+	{
 		m = null;
 		n = null;
+		result = null;
 	}
 
 	int Ackermann(int m, int n)
@@ -39,4 +96,3 @@
 		}
 	}
 }
-
