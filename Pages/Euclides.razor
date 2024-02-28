@@ -1,5 +1,48 @@
 ﻿@page "/euclides"
-<PageTitle>Euclides</PageTitle>
+@using System
 
-<h3>Algoritmo de Euclides</h3>
+<h3 style="color: blue;">¡Calcula el Máximo Común Divisor (MCD)!</h3>
 
+<p>Ingresa dos números para encontrar su MCD:</p>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">Primer número:</span>
+    <input type="number" class="form-control" @bind="NumeroA" />
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">Segundo número:</span>
+    <input type="number" class="form-control" @bind="NumeroB" />
+</div>
+
+<button class="btn btn-primary" @onclick="CalcularMCD">Calcular MCD</button>
+
+@if (McdCalculado)
+{
+    <p style="color: green;">El MCD de @NumeroA y @NumeroB es: @ResultadoMCD</p>
+}
+
+@code {
+    private int NumeroA;
+    private int NumeroB;
+    private int ResultadoMCD;
+    private bool McdCalculado;
+
+    private void CalcularMCD()
+    {
+        ResultadoMCD = MetodoEuclides(NumeroA, NumeroB);
+        McdCalculado = true;
+    }
+
+    private int MetodoEuclides(int a, int b)
+    {
+        if (b == 0)
+        {
+            return a;
+        }
+        else
+        {
+            return MetodoEuclides(b, a % b);
+        }
+    }
+}
