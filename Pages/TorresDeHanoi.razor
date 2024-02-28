@@ -3,3 +3,57 @@
 
 <h3>Torres De Hanoi</h3>
 
+<input  @bind=disco/>
+
+<button @onclick="Inicio">Ingresar</button>
+
+@foreach (var item in Imprimir)
+{
+    <tr>
+        @{
+            var dato = item.Split(" ");
+        }
+        <td class="border-1">@dato</td>
+
+    </tr>
+}
+
+@code{
+    int disco=0;
+    int torres =3;
+    int contador =1;
+    Stack<int> origen;
+    Stack<int> auxiliar;
+    Stack<int> destino;
+    List<string> Imprimir = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        origen = new Stack<int>();
+        auxiliar = new Stack<int>();
+        destino = new Stack<int>();
+    }
+
+    void Inicio()
+    {
+        TorreHanoi(disco, origen, destino, auxiliar);
+    }
+
+    int TorreHanoi(int disco, Stack<int> origen, Stack<int> destino, Stack<int> auxiliar)
+    {
+        if (disco==1)
+        {
+            destino.Push(disco);
+            Imprimir.Add($"Mueve el disco {disco} desde torre {origen} hasta {destino}");
+            return 0;
+        }
+        else
+        {
+            return TorreHanoi(disco - 1, origen, auxiliar, destino);
+            destino.Push(disco);
+            Imprimir.Add($"");
+            return TorreHanoi(disco - 1, auxiliar, destino, origen);
+        }
+    }
+
+}
