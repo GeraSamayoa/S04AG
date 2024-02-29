@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin: 8rem 0rem 0rem 30rem;
+    margin:3rem 0rem 0rem 30rem;
 }
 
 
