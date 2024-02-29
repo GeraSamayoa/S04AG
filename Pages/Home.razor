@@ -1,19 +1,12 @@
-﻿@page "/"
+﻿@inject NavigationManager NavigationManager
+
+@page "/"
 
 <PageTitle>Menu</PageTitle>
 
 <div>
+	<NavMenuHeader />
 	<header class="headerHome">
-		<nav class="navHome">
-			<div class="navOpHome">
-				<a class="textNavHome" href="/">Home</a>
-			</div>
-			<div class="navOp">
-				<a class="textNavHome" href="/ackerman">Funcion de <br /> Ackerman</a>
-				<a class="textNavHome" href="/euclides">Algoritmo de <br /> Euclides</a>
-				<a class="textNavHome" href="/torresdehanoi">Torres de <br /> Hanoi</a>
-			</div>
-		</nav>
 		<section class="headerHomeTitle">
 			<h1 class="headerHomeTitleInfo">CALCULADORA DE FUNCION DE ACKERMAN, ALGORITMO DE EUCLIDES Y TORRES DE HANOI</h1>
 		</section>
@@ -21,30 +14,44 @@
 	<div class="containerOpGen">
 		<div class="containerOp">
 			<div class="containerOpInfo">
-				<img src="/AckermanOp.png" width="200" />
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</p>
+				<img src="/AckermanOp.png" width="400" />
+				<h3>Funcion de Ackerman</h3>
+				<p class="OpInfo">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper venenatis ante, vitae aliquam mauris
+					Fusce in diam id risus tristique fermentum ut dignissim tellus. Etiam hendrerit elit
+				</p>
 			</div>
-			<button class="buttonOp"><a href="/ackerman"></a>INGRESAR</button>
+			<button class="buttonOp" @onclick="@( () => NavigateTo("/ackerman") )">INGRESAR</button>
 		</div>
 		<div class="containerOp">
 			<div class="containerOpInfo">
-				<img src="/EuclidesOp.png" width="200" />
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</p>
+				<img src="/EuclidesOp.png" width="325" />
+				<h3>Algoritmo de Euclides</h3>
+				<p class="OpInfo">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper venenatis ante, vitae aliquam mauris
+					Fusce in diam id risus tristique fermentum ut dignissim tellus. Etiam hendrerit elit
+				</p>
 			</div>
-			<button class="buttonOp"><a href="/euclides"></a>INGRESAR</button>
+			<button class="buttonOp" @onclick="@( () => NavigateTo("/euclides") )">INGRESAR</button>
 		</div>
 		<div class="containerOp">
 			<div class="containerOpInfo">
-				<img src="/TorresDeHanoiOp.png" width="200" />
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</p>
+				<img src="/TorresDeHanoiOp.png" width="350" />
+				<h3>Torres de Hanoi</h3>
+				<p class="OpInfo">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper venenatis ante, vitae aliquam mauris
+					Fusce in diam id risus tristique fermentum ut dignissim tellus. Etiam hendrerit elit
+				</p>
 			</div>
-			<button class="buttonOp"><a href="/torresdehanoi"></a>INGRESAR</button>
+			<button class="buttonOp" @onclick="@( () => NavigateTo("/torresdehanoi") )">INGRESAR</button>
 		</div>
 	</div>
-	<footer class="footerHome">
-		<p class="textFooterHome">© 2024 Grupo 3</p>
-	</footer>
+	<Footer />
 </div>
 
-
+@code {
+	void NavigateTo(string url)
+	{
+		NavigationManager.NavigateTo(url);
+	}
+}
