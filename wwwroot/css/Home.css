@@ -4,7 +4,7 @@
 
 .navHome {
 
-    height: 5rem;
+    height: 4rem;
     background: rgba(28, 142, 142, 0.32);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -40,7 +40,7 @@ display: flex;
 }
 
 .headerHomeTitle {
-    height: 28rem;
+    height: 14rem;
     background: rgba(28, 142, 142, 0.01);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 3rem;
@@ -55,11 +55,11 @@ display: flex;
     text-align: center;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Castellar;
-    font-size: 4rem;
+    font-size: 2.8rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    mix-blend-mode: color-dodge;
+  /*  mix-blend-mode: color-dodge;*/
 }
 .containerOpGen {
     display: flex;
@@ -76,8 +76,8 @@ display: flex;
 }
 
 .containerOpInfo {
-    width: 27rem;
-    height: 30rem;
+    width: 20rem;
+    height: 22rem;
     border-radius: 15px;
     background: rgba(28, 142, 142, 0.32);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -90,11 +90,12 @@ display: flex;
 
 .OpInfo {
     text-align:center;
+    font-size: 0.76rem;
 }
 
 .buttonOp {
-    width: 8rem;
-    height: 2.8rem;
+    width: 7rem;
+    height: 2.3rem;
     border-radius: 5px;
     background: rgba(11, 190, 179, 0.55);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -113,7 +114,7 @@ display: flex;
 }
 
 .footerHome {
-    height: 6rem;
+    height: 5rem;
     background: rgba(28, 142, 142, 0.32);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin: 3rem -2rem -1rem -2rem;
@@ -126,4 +127,5 @@ display: flex;
     margin-right: 5rem;
     color: #FFF;
     font-size: 1rem;
+    margin-top: 1.5rem;
 }
