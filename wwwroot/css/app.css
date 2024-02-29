@@ -1,5 +1,8 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-image: url('../CIP.jpg');
+    color: #fff;
+    background-size: cover;
 }
 
 h1:focus {
