@@ -1,40 +1,58 @@
 ﻿@page "/euclides"
 @using System
 
-<h3 style="color: blue;">¡Calcula el Máximo Común Divisor (MCD)!</h3>
-
-<p>Ingresa dos números para encontrar su MCD:</p>
-
-<div class="input-group mb-3">
-    <span class="input-group-text">Primer número:</span>
-    <input type="number" class="form-control" @bind="NumeroA" />
+<div style="text-align: center; margin-top: 20px;">
+    <h1 style="color: blue; font-family: Arial, sans-serif;">Función de Euclides (MCD)</h1>
 </div>
 
-<div class="input-group mb-3">
-    <span class="input-group-text">Segundo número:</span>
-    <input type="number" class="form-control" @bind="NumeroB" />
+<div style="text-align: center; margin-top: 30px;">
+    <p>Ingrese los números  para encontrar su MCD:</p>
+
+    <div class="input-group mb-3" style="width: 300px; margin: auto;">
+        <span class="input-group-text">Primer número:</span>
+        <input type="number" class="form-control" @bind="A" />
+    </div>
+
+    <div class="input-group mb-3" style="width: 300px; margin: auto;">
+        <span class="input-group-text">Segundo número:</span>
+        <input type="number" class="form-control" @bind="B" />
+    </div>
+
+    <button class="btn btn-primary" style="display: block; margin: auto;" @onclick="CalcularMCD">Calcular MCD</button>
+
+    @if (McdCalculado)
+    {
+        <p style="color: #008000; text-align: center; margin-top: 20px; font-size: 20px; font-family: Arial, sans-serif;">El MCD de @A y @B es: @Resultado</p>
+    }
+    @if (!string.IsNullOrEmpty(MensajeError))
+    {
+        <p style="color: red; text-align: center; margin-top: 20px; font-size: 20px; font-family: Arial, sans-serif;">@MensajeError</p>
+    }
 </div>
-
-<button class="btn btn-primary" @onclick="CalcularMCD">Calcular MCD</button>
-
-@if (McdCalculado)
-{
-    <p style="color: green;">El MCD de @NumeroA y @NumeroB es: @ResultadoMCD</p>
-}
 
 @code {
-    private int NumeroA;
-    private int NumeroB;
-    private int ResultadoMCD;
-    private bool McdCalculado;
+    int A;
+    int B;
+    int Resultado;
+    bool McdCalculado;
+    string MensajeError = "";
 
     private void CalcularMCD()
     {
-        ResultadoMCD = MetodoEuclides(NumeroA, NumeroB);
+        
+        MensajeError = "";
+
+        if (A <= 0 || B <= 0)
+        {
+            MensajeError = "Por favor, ingrese números positivos y diferentes de cero.";
+            return;
+        }
+
+        Resultado = CalculoMCD(A, B);
         McdCalculado = true;
     }
 
-    private int MetodoEuclides(int a, int b)
+    private int CalculoMCD(int a, int b)
     {
         if (b == 0)
         {
@@ -42,7 +60,8 @@
         }
         else
         {
-            return MetodoEuclides(b, a % b);
+            return CalculoMCD(b, a % b);
         }
     }
 }
+
