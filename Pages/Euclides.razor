@@ -1,67 +1,90 @@
 ﻿@page "/euclides"
 @using System
 
-<div style="text-align: center; margin-top: 20px;">
-    <h1 style="color: blue; font-family: Arial, sans-serif;">Función de Euclides (MCD)</h1>
+<NavMenuHeader />
+
+<div class="containerAck">
+	<div class="titleGridEuc">
+		<h1 class="titleEuc">Función de Euclides (MCD)</h1>
+	</div>
+
+	<div class="formGridEuc">
+		<p class="labelEuc">Ingrese los números  para encontrar su MCD:</p>
+
+		<div class="input-group mb-3" style="width: 300px; margin: auto;">
+			<span class="input-group-text">Primer número:</span>
+			<input type="number" class="form-control inputEuc" @bind="A" />
+		</div>
+
+		<div class="input-group mb-3" style="width: 300px; margin: auto;">
+			<span class="input-group-text">Segundo número:</span>
+			<input type="number" class="form-control inputEuc" @bind="B" />
+		</div>
+	</div>
+
+	<div class="buttonGridEuc">
+		<button class="buttonEuc" @onclick="CalcularMCD">Calcular MCD</button>
+		<button class="buttonEuc"  @onclick="LimpiarValores">Limpiar</button>
+	</div>
+
+	<div class="resultadoGridEuc">
+		@if (!A.HasValue || !B.HasValue)
+		{
+			<p class="resultadoEuc">Ingrese las valores solicitados.</p>
+		}
+		else if (Resultado.HasValue)
+		{
+			<p class="resultadoEuc">El MCD de @A y @B es: @Resultado</p>
+		}
+		@if (!string.IsNullOrEmpty(MensajeError))
+		{
+			<p class="errorResultadoEuc">@MensajeError</p>
+		}
+	</div>
 </div>
 
-<div style="text-align: center; margin-top: 30px;">
-    <p>Ingrese los números  para encontrar su MCD:</p>
-
-    <div class="input-group mb-3" style="width: 300px; margin: auto;">
-        <span class="input-group-text">Primer número:</span>
-        <input type="number" class="form-control" @bind="A" />
-    </div>
-
-    <div class="input-group mb-3" style="width: 300px; margin: auto;">
-        <span class="input-group-text">Segundo número:</span>
-        <input type="number" class="form-control" @bind="B" />
-    </div>
-
-    <button class="btn btn-primary" style="display: block; margin: auto;" @onclick="CalcularMCD">Calcular MCD</button>
-
-    @if (McdCalculado)
-    {
-        <p style="color: #008000; text-align: center; margin-top: 20px; font-size: 20px; font-family: Arial, sans-serif;">El MCD de @A y @B es: @Resultado</p>
-    }
-    @if (!string.IsNullOrEmpty(MensajeError))
-    {
-        <p style="color: red; text-align: center; margin-top: 20px; font-size: 20px; font-family: Arial, sans-serif;">@MensajeError</p>
-    }
-</div>
+<Footer />
 
 @code {
-    int A;
-    int B;
-    int Resultado;
-    bool McdCalculado;
-    string MensajeError = "";
+	int? A;
+	int? B;
+	int? Resultado;
+	bool McdCalculado;
+	string MensajeError = "";
 
-    private void CalcularMCD()
-    {
-        
-        MensajeError = "";
+	private void CalcularMCD()
+	{
 
-        if (A <= 0 || B <= 0)
-        {
-            MensajeError = "Por favor, ingrese números positivos y diferentes de cero.";
-            return;
-        }
+		MensajeError = "";
 
-        Resultado = CalculoMCD(A, B);
-        McdCalculado = true;
-    }
+		if (A <= 0 || B <= 0)
+		{
+			MensajeError = "Por favor, ingrese números positivos y diferentes de cero.";
+			return;
+		}
 
-    private int CalculoMCD(int a, int b)
-    {
-        if (b == 0)
-        {
-            return a;
-        }
-        else
-        {
-            return CalculoMCD(b, a % b);
-        }
-    }
+		Resultado = CalculoMCD(A ?? 0, B ?? 0);
+		McdCalculado = true;
+	}
+
+	private int CalculoMCD(int a, int b)
+	{
+		if (b == 0)
+		{
+			return a;
+		}
+		else
+		{
+			return CalculoMCD(b, a % b);
+		}
+	}
+
+	void LimpiarValores()
+	{
+		A = null;
+		B = null;
+		Resultado = null;
+		MensajeError = "";
+	}
 }
 
