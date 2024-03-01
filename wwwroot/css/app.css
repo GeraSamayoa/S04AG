@@ -5,6 +5,10 @@ html, body {
     background-size: cover;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 h1:focus {
     outline: none;
 }
@@ -103,4 +107,13 @@ a, .btn-link {
 
 code {
     color: #c02d76;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(28, 142, 142, 0.32);
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background-color: rgba(28, 142, 142, 0.01);
 }
