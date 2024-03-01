@@ -117,7 +117,7 @@ display: flex;
     height: 5rem;
     background: rgba(28, 142, 142, 0.32);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 3rem -2rem -1rem -2rem;
+    margin: 3rem -2rem 0rem -2rem;
 display: flex;
     justify-content: flex-end;
     align-items: center;
