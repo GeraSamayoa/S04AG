@@ -23,14 +23,6 @@
     height: 2.8rem;
 }
 
-.custom-placeholder::placeholder {
-    color: rgba(255, 255, 255, 0.66);
-    font-family: Inter;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
 
 .buttonEuc {
     width: 150px;
@@ -47,7 +39,7 @@
     line-height: normal;
 }
 
-    .buttonAck:hover {
+    .buttonEuc:hover {
         background: #0AE1D4;
         color: #1C8E8E;
     }
@@ -106,16 +98,4 @@ grid-row: 1;
     justify-content: center;
     grid-column: 2;
     grid-row: 3;
-}
-
-.barraGrid {
-    grid-column: 1;
-    grid-row: 2;
-    width: 200px;
-    stroke-width: 1px;
-    stroke: #FFF;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    margin-left: 2.4rem;
 }

@@ -5,7 +5,7 @@
 
 <div class="containerAck">
 	<div class="titleGridEuc">
-		<h1 class="titleEuc">Función de Euclides (MCD)</h1>
+		<h1 class="titleEuc">Algoritmo de Euclides (MCD)</h1>
 	</div>
 
 	<div class="formGridEuc">
@@ -13,12 +13,12 @@
 
 		<div class="input-group mb-3" style="width: 300px; margin: auto;">
 			<span class="input-group-text">Primer número:</span>
-			<input type="number" class="form-control inputEuc" @bind="A" />
+			<input type="number" class="form-control inputEuc" @bind="primerNum" />
 		</div>
 
 		<div class="input-group mb-3" style="width: 300px; margin: auto;">
 			<span class="input-group-text">Segundo número:</span>
-			<input type="number" class="form-control inputEuc" @bind="B" />
+			<input type="number" class="form-control inputEuc" @bind="secondNum" />
 		</div>
 	</div>
 
@@ -28,17 +28,17 @@
 	</div>
 
 	<div class="resultadoGridEuc">
-		@if (!A.HasValue || !B.HasValue)
+		@if (!primerNum.HasValue || !secondNum.HasValue)
 		{
 			<p class="resultadoEuc">Ingrese las valores solicitados.</p>
 		}
-		else if (Resultado.HasValue)
+		else if (resultado.HasValue)
 		{
-			<p class="resultadoEuc">El MCD de @A y @B es: @Resultado</p>
+			<p class="resultadoEuc">El MCD de @primerNum y @secondNum es: @resultado</p>
 		}
-		@if (!string.IsNullOrEmpty(MensajeError))
+		@if (!string.IsNullOrEmpty(mensajeError))
 		{
-			<p class="errorResultadoEuc">@MensajeError</p>
+			<p class="errorResultadoEuc">@mensajeError</p>
 		}
 	</div>
 </div>
@@ -46,45 +46,45 @@
 <Footer />
 
 @code {
-	int? A;
-	int? B;
-	int? Resultado;
-	bool McdCalculado;
-	string MensajeError = "";
+	int? primerNum;
+	int? secondNum;
+	int? resultado;
+	bool mcdCalculado;
+	string mensajeError = "";
 
 	private void CalcularMCD()
 	{
 
-		MensajeError = "";
+		mensajeError = "";
 
-		if (A <= 0 || B <= 0)
+		if (primerNum <= 0 || secondNum <= 0)
 		{
-			MensajeError = "Por favor, ingrese números positivos y diferentes de cero.";
+			mensajeError = "Por favor, ingrese números positivos y diferentes de cero.";
 			return;
 		}
 
-		Resultado = CalculoMCD(A ?? 0, B ?? 0);
-		McdCalculado = true;
+		resultado = CalculoMCD(primerNum ?? 0, secondNum ?? 0);
+		mcdCalculado = true;
 	}
 
-	private int CalculoMCD(int a, int b)
+	private int CalculoMCD(int num1, int num2)
 	{
-		if (b == 0)
+		if (num2 == 0)
 		{
-			return a;
+			return num1;
 		}
 		else
 		{
-			return CalculoMCD(b, a % b);
+			return CalculoMCD(num2, num1 % num2);
 		}
 	}
 
 	void LimpiarValores()
 	{
-		A = null;
-		B = null;
-		Resultado = null;
-		MensajeError = "";
+		primerNum = null;
+		secondNum = null;
+		resultado = null;
+		mensajeError = "";
 	}
 }
 
