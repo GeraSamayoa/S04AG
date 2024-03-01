@@ -2,6 +2,7 @@
 
 <PageTitle>Ackermann</PageTitle>
 
+<!-- Se llama al componente NavMenuHeader -->
 <NavMenuHeader />
 
 <head>
@@ -16,19 +17,23 @@
 	</div>
 
 	<div class="inputmGrid">
-
+		<!--Se solicita el ingreos del primer valor (m)-->
 		<label class="labelAck" for="m_input">Ingrese el valor de m (primer número):</label>
 		<input class="inputAck custom-placeholder" type="number" @bind="m" placeholder="    m" required />
 	</div>
 	<div class="inputnGrid">
+		<!--Se solicita el ingreos del segundo valor (n)-->
 		<label class="labelAck" for="n_input">Ingrese el valor de n (segundo número):</label>
 		<input class="inputAck custom-placeholder" type="number" @bind="n" placeholder="     n" required />
 	</div>
+	<!--Por medio del boton se ejecuta la funcion Resultado y por medio del otro boton la funcion LimpiarValores-->
 	<div class="buttonGrid">
-		<button class="buttonAck" @onclick="resultado" disabled="@(m.HasValue && (m < 0 || m > 3) || n.HasValue && (n < 0 || n > 3))">Calcular</button>
+		<button class="buttonAck" @onclick="Resultado" disabled="@(m.HasValue && (m < 0 || m > 3) || n.HasValue && (n < 0 || n > 3))">Calcular</button>
 		<button class="buttonAck" @onclick="LimpiarValores">Limpiar</button>
 
 	</div>
+
+	<!--Se realizas las validaciones de los valores ingresados y se muestra el resultado de la funcion, asi como los mensajes de error correspondientes-->
 	<div class="resultadoGrid">
 		@if (m.HasValue && (m < 0 || m > 3))
 		{
@@ -59,6 +64,7 @@
 	</div>
 </div>
 
+<!-- Se llama al componente Footer -->
 <Footer />
 
 @code {
@@ -66,7 +72,8 @@
 	int? m;
 	int? n;
 
-	void resultado()
+	//Se realiza la funcion Resultado, la cual realiza las validaciones de los valores ingresados y se asigna el resultado de la funcion Ackermann a la variable result.
+	void Resultado()
 	{
 		if ((m.HasValue && (m < 0 || m > 3)) || (n.HasValue && (n < 0 || n > 3)))
 		{
@@ -76,7 +83,7 @@
 
 		result = Ackermann(m ?? 0, n ?? 0);
 	}
-
+	//Se realiza la funcion LimpiarValores, la cual limpia los valores ingresados y el resultado de la funcion.
 	void LimpiarValores()
 	{
 		m = null;
@@ -84,6 +91,7 @@
 		result = null;
 	}
 
+	//Se realiza la funcion Ackermann, la cual realiza la operacion de la funcion de Ackermann.
 	int Ackermann(int m, int n)
 	{
 		if (m == 0)
